@@ -1,95 +1,28 @@
-// Admissions Page JavaScript - Excludes Header & Footer
+// Admissions Page Interactive Features
 
-document.addEventListener('DOMContentLoaded', function() {
+// Scroll reveal animation
+const revealOnScroll = () => {
+  const sections = document.querySelectorAll('.section');
   
-  // Animate sections on scroll (excluding header and footer)
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-  };
-
-  const observer = new IntersectionObserver(function(entries) {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+        entry.target.classList.add('active');
       }
     });
-  }, observerOptions);
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
 
-  // Observe only .section elements (not header or footer)
-  const sections = document.querySelectorAll('.section');
   sections.forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(30px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    section.classList.add('reveal');
     observer.observe(section);
   });
+};
 
-  // Animate list items on scroll
-  const listItems = document.querySelectorAll('.section ul li, .section ol li');
-  listItems.forEach((item, index) => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateX(-20px)';
-    item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
-    
-    const itemObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateX(0)';
-        }
-      });
-    }, observerOptions);
-    
-    itemObserver.observe(item);
-  });
-
-  // Add counter animation for fees
-  const feesCells = document.querySelectorAll('.fees-table tbody td:nth-child(2), .fees-table tbody td:nth-child(3)');
-  
-  feesCells.forEach(cell => {
-    const text = cell.textContent.trim();
-    const number = parseInt(text.replace(/,/g, ''));
-    
-    if (!isNaN(number)) {
-      cell.textContent = '0';
-      
-      const cellObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateValue(cell, 0, number, 1500);
-            cellObserver.unobserve(cell);
-          }
-        });
-      }, { threshold: 0.5 });
-      
-      cellObserver.observe(cell);
-    }
-  });
-
-  // Counter animation function
-  function animateValue(element, start, end, duration) {
-    const startTime = performance.now();
-    
-    function update(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      
-      const easeOutQuad = progress => progress * (2 - progress);
-      const currentValue = Math.floor(start + (end - start) * easeOutQuad(progress));
-      
-      element.textContent = currentValue.toLocaleString();
-      
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
-    }
-    
-    requestAnimationFrame(update);
-  }
-
-  // Smooth scroll for anchor links
+// Smooth scroll for any anchor links
+const smoothScrollLinks = () => {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
@@ -102,177 +35,257 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+};
 
-  // Toggle hero section visibility
-function toggleHero() {
-    const heroSection = document.getElementById('heroSection');
-    const toggleBtn = document.querySelector('.hero-toggle-btn');
+// Add hover effects to table rows
+const enhanceTableInteractivity = () => {
+  const tableRows = document.querySelectorAll('.fees-table tbody tr');
+  
+  tableRows.forEach((row, index) => {
+    // Stagger animation on page load
+    row.style.opacity = '0';
+    row.style.transform = 'translateX(-20px)';
     
-    if (heroSection.style.display === 'none' || heroSection.style.display === '') {
-        heroSection.style.display = 'flex';
-        toggleBtn.textContent = 'Hide Hero Image';
-        // Smooth scroll to hero section
-        heroSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-        heroSection.style.display = 'none';
-        toggleBtn.textContent = 'Show Hero Image';
-    }
-}
+    setTimeout(() => {
+      row.style.transition = 'all 0.6s ease-out';
+      row.style.opacity = '1';
+      row.style.transform = 'translateX(0)';
+    }, 300 + (index * 150));
 
-// Optional: Show hero on page load after a delay (for demo purposes)
-window.addEventListener('DOMContentLoaded', function() {
-    // Uncomment the line below if you want the hero to appear automatically after 1 second
-    // setTimeout(() => toggleHero(), 1000);
-});
-
-  // Add copy functionality to fees table
-  const feesTable = document.querySelector('.fees-table');
-  if (feesTable) {
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style.cssText = `
-      display: flex;
-      gap: 15px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    `;
-
-    // Copy button
-    const copyButton = document.createElement('button');
-    copyButton.textContent = 'Copy Fees Structure';
-    copyButton.className = 'copy-fees-btn';
-    copyButton.style.cssText = `
-      padding: 12px 24px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    `;
-    
-    copyButton.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-2px)';
-      this.style.boxShadow = '0 8px 20px rgba(102, 126, 234, 0.4)';
-    });
-    
-    copyButton.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0)';
-      this.style.boxShadow = 'none';
-    });
-    
-    copyButton.addEventListener('click', function() {
-      const rows = Array.from(feesTable.querySelectorAll('tr'));
-      const text = rows.map(row => {
-        const cells = Array.from(row.querySelectorAll('th, td'));
-        return cells.map(cell => cell.textContent.trim()).join('\t');
-      }).join('\n');
+    // Add click to highlight effect
+    row.addEventListener('click', function() {
+      tableRows.forEach(r => r.style.background = '');
       
-      navigator.clipboard.writeText(text).then(() => {
-        const originalText = copyButton.textContent;
-        copyButton.textContent = '✓ Copied!';
-        copyButton.style.background = '#28a745';
+      if (index % 2 === 0) {
+        this.style.background = 'linear-gradient(135deg, #e6f2ff, #cce5ff)';
+      } else {
+        this.style.background = 'linear-gradient(135deg, #e6f2ff, #cce5ff)';
+      }
+      
+      setTimeout(() => {
+        this.style.background = '';
+      }, 2000);
+    });
+  });
+};
+
+// Add sparkle effect to sections on hover
+const addSparkleEffect = () => {
+  const sections = document.querySelectorAll('.section h2');
+  
+  sections.forEach(heading => {
+    heading.addEventListener('mouseenter', function() {
+      createSparkles(this);
+    });
+  });
+};
+
+const createSparkles = (element) => {
+  for (let i = 0; i < 3; i++) {
+    setTimeout(() => {
+      const sparkle = document.createElement('div');
+      sparkle.style.cssText = `
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 100;
+      `;
+      
+      const rect = element.getBoundingClientRect();
+      sparkle.style.left = rect.left + Math.random() * rect.width + 'px';
+      sparkle.style.top = rect.top + Math.random() * rect.height + 'px';
+      
+      document.body.appendChild(sparkle);
+      
+      const animation = sparkle.animate([
+        { 
+          transform: 'translateY(0) scale(1)', 
+          opacity: 1 
+        },
+        { 
+          transform: `translateY(-${30 + Math.random() * 20}px) scale(0)`, 
+          opacity: 0 
+        }
+      ], {
+        duration: 800 + Math.random() * 400,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+      });
+      
+      animation.onfinish = () => sparkle.remove();
+    }, i * 100);
+  }
+};
+
+// Animate numbers in fees table
+const animateNumbers = () => {
+  const numberCells = document.querySelectorAll('.fees-table tbody td:not(:first-child)');
+  
+  const observerOptions = {
+    threshold: 0.5
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        const cell = entry.target;
+        const finalValue = cell.textContent.replace(/,/g, '');
+        const duration = 1000;
+        const steps = 30;
+        const increment = finalValue / steps;
+        let current = 0;
+        
+        cell.dataset.animated = 'true';
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= finalValue) {
+            current = finalValue;
+            clearInterval(timer);
+          }
+          cell.textContent = Math.floor(current).toLocaleString();
+        }, duration / steps);
+      }
+    });
+  }, observerOptions);
+  
+  numberCells.forEach(cell => observer.observe(cell));
+};
+
+// Add progress indicator for list items
+const addProgressIndicators = () => {
+  const orderedLists = document.querySelectorAll('.section ol');
+  
+  orderedLists.forEach(list => {
+    const items = list.querySelectorAll('li');
+    const totalItems = items.length;
+    
+    items.forEach((item, index) => {
+      item.addEventListener('click', function() {
+        this.style.background = 'linear-gradient(135deg, #d4f1f4, #cfe8fc)';
+        this.style.borderColor = '#667eea';
+        
+        // Create a checkmark overlay
+        const check = document.createElement('span');
+        check.textContent = '✓';
+        check.style.cssText = `
+          position: absolute;
+          right: 24px;
+          top: 50%;
+          transform: translateY(-50%) scale(0);
+          width: 32px;
+          height: 32px;
+          background: linear-gradient(135deg, #48bb78, #38a169);
+          color: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        `;
+        
+        this.appendChild(check);
         
         setTimeout(() => {
-          copyButton.textContent = originalText;
-          copyButton.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-        }, 2000);
-      }).catch(err => {
-        console.error('Failed to copy:', err);
+          check.style.transform = 'translateY(-50%) scale(1)';
+        }, 10);
       });
     });
+  });
+};
 
-    // Print button
-    const printButton = document.createElement('button');
-    printButton.textContent = 'Print Fees Structure';
-    printButton.className = 'print-fees-btn';
-    printButton.style.cssText = `
-      padding: 12px 24px;
-      background: #ffffff;
-      color: #667eea;
-      border: 2px solid #667eea;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    `;
-    
-    printButton.addEventListener('mouseenter', function() {
-      this.style.background = '#667eea';
-      this.style.color = 'white';
-      this.style.transform = 'translateY(-2px)';
-    });
-    
-    printButton.addEventListener('mouseleave', function() {
-      this.style.background = 'white';
-      this.style.color = '#667eea';
-      this.style.transform = 'translateY(0)';
-    });
-    
-    printButton.addEventListener('click', function() {
-      window.print();
-    });
-
-    buttonContainer.appendChild(copyButton);
-    buttonContainer.appendChild(printButton);
-    feesTable.parentNode.insertBefore(buttonContainer, feesTable.nextSibling);
-  }
-
-  // Add floating "Apply Now" button
-  const applyButton = document.createElement('a');
-  applyButton.href = 'contact.html';
-  applyButton.className = 'floating-apply-btn';
-  applyButton.textContent = 'Apply Now';
-  applyButton.style.cssText = `
+// Add floating particles background
+const createFloatingParticles = () => {
+  const particleCount = 15;
+  const container = document.createElement('div');
+  container.style.cssText = `
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    padding: 16px 32px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
   `;
   
-  applyButton.addEventListener('mouseenter', function() {
-    this.style.transform = 'translateY(-5px) scale(1.05)';
-    this.style.boxShadow = '0 12px 32px rgba(102, 126, 234, 0.5)';
-  });
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.style.cssText = `
+      position: absolute;
+      width: ${4 + Math.random() * 6}px;
+      height: ${4 + Math.random() * 6}px;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+      border-radius: 50%;
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      animation: float ${15 + Math.random() * 10}s infinite ease-in-out;
+      animation-delay: ${Math.random() * 5}s;
+      filter: blur(1px);
+    `;
+    container.appendChild(particle);
+  }
   
-  applyButton.addEventListener('mouseleave', function() {
-    this.style.transform = 'translateY(0) scale(1)';
-    this.style.boxShadow = '0 8px 24px rgba(102, 126, 234, 0.4)';
-  });
+  document.body.insertBefore(container, document.body.firstChild);
   
-  document.body.appendChild(applyButton);
-  
-  // Show/hide floating button on scroll
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 300) {
-      applyButton.style.opacity = '1';
-      applyButton.style.pointerEvents = 'auto';
-    } else {
-      applyButton.style.opacity = '0';
-      applyButton.style.pointerEvents = 'none';
+  // Add CSS animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes float {
+      0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+      }
+      33% { 
+        transform: translate(${-50 + Math.random() * 100}px, ${-50 + Math.random() * 100}px) scale(1.2);
+        opacity: 0.6;
+      }
+      66% { 
+        transform: translate(${-50 + Math.random() * 100}px, ${-50 + Math.random() * 100}px) scale(0.8);
+        opacity: 0.4;
+      }
     }
-  });
+  `;
+  document.head.appendChild(style);
+};
 
-  // Highlight table rows on hover with subtle animation
-  const tableRows = document.querySelectorAll('.fees-table tbody tr');
-  tableRows.forEach(row => {
-    row.addEventListener('mouseenter', function() {
-      this.style.transition = 'all 0.3s ease';
+// Parallax effect on scroll
+const addParallaxEffect = () => {
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const sections = document.querySelectorAll('.section');
+    
+    sections.forEach((section, index) => {
+      const speed = 0.5 + (index * 0.1);
+      const yPos = -(scrolled * speed * 0.1);
+      section.style.transform = `translateY(${yPos}px)`;
     });
   });
+};
 
-  console.log('Admissions page JavaScript loaded successfully!');
+// Initialize all features when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  revealOnScroll();
+  smoothScrollLinks();
+  enhanceTableInteractivity();
+  addSparkleEffect();
+  animateNumbers();
+  addProgressIndicators();
+  createFloatingParticles();
+  addParallaxEffect();
+  
+  console.log('✨ Admissions page features loaded successfully!');
+});
+
+// Add smooth entry animation for the entire page
+window.addEventListener('load', () => {
+  document.body.style.opacity = '0';
+  document.body.style.transition = 'opacity 0.5s ease-in';
+  
+  setTimeout(() => {
+    document.body.style.opacity = '1';
+  }, 100);
 });

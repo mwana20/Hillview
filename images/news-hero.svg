@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 600">
+  <defs>
+    <linearGradient id="g2" x1="0" x2="1">
+      <stop offset="0" stop-color="#1a4d2e" />
+      <stop offset="1" stop-color="#4f8a6d" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g2)" />
+  <text x="7%" y="50%" font-size="54" fill="#fff" font-family="Segoe UI, Arial" font-weight="700">News & Upcoming Events</text>
+  <text x="7%" y="62%" font-size="20" fill="#ecf0f1" font-family="Segoe UI, Arial">Announcements, visitations, tours and co-curricular activities</text>
+</svg>

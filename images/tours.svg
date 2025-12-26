@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect fill="#3b7b52" width="1200" height="800" />
+  <text x="50%" y="45%" font-size="42" fill="#fff" text-anchor="middle" dominant-baseline="middle" font-family="Arial">Open Tours</text>
+  <text x="50%" y="60%" font-size="18" fill="#ecf0f1" text-anchor="middle">Campus tours for prospective families</text>
+</svg>

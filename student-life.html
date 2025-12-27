@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="css/common.css" />
   <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="css/student-life.css" />
+  <link rel="stylesheet" href="css/footer.css" />
 </head>
 <body>
 
@@ -185,33 +186,150 @@
   </ul>
 </section>
 
+<!-- ================= EPIC FOOTER WITH FIXED BACKGROUND ================= -->
 <footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <h4>Hill View College</h4>
-      <p>Mixed Day & Boarding Secondary School</p>
+  <div class="footer-content">
+    
+    <!-- Footer Top Section -->
+    <div class="footer-top">
+      <div class="footer-container">
+        
+        <div class="footer-grid">
+          
+          <!-- School Info -->
+          <div class="footer-school-info">
+            <div class="footer-logo">
+              <img src="images/Hillview_logo.jpg" alt="Hill View College Logo" class="footer-logo-img">
+              <div>
+                <h3>Hill View College</h3>
+                <p class="footer-tagline">Excellence in Education</p>
+              </div>
+            </div>
+            <p class="footer-description">
+              A mixed day and boarding secondary school offering both O-Level and A-Level education, 
+              committed to nurturing disciplined, responsible, and academically excellent learners.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"><i class="social-icon">f</i></a>
+              <a href="#" aria-label="Twitter"><i class="social-icon">t</i></a>
+              <a href="#" aria-label="Instagram"><i class="social-icon">i</i></a>
+              <a href="#" aria-label="LinkedIn"><i class="social-icon">in</i></a>
+              <a href="#" aria-label="YouTube"><i class="social-icon">y</i></a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="academics.html">Academics</a></li>
+              <li><a href="admissions.html">Admissions</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+          </div>
+
+          <!-- Academics -->
+          <div class="footer-column">
+            <h4>Academics</h4>
+            <ul>
+              <li><a href="academics.html#olevel">O-Level</a></li>
+              <li><a href="academics.html#alevel">A-Level</a></li>
+              <li><a href="student-life.html">Student Life</a></li>
+              <li><a href="news.html">News & Events</a></li>
+              <li><a href="#">Examinations</a></li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Parent Portal</a></li>
+              <li><a href="#">Student Portal</a></li>
+              <li><a href="#">Downloads</a></li>
+              <li><a href="#">Policies</a></li>
+              <li><a href="#">FAQs</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <div>
+                <strong>Address</strong>
+                <p>Kampala, Uganda</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📞</span>
+              <div>
+                <strong>Phone</strong>
+                <p>+256 XXX XXXXXX</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">✉️</span>
+              <div>
+                <strong>Email</strong>
+                <p>info@hillviewcollege.ac.ug</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🕒</span>
+              <div>
+                <strong>Office Hours</strong>
+                <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Newsletter Subscription -->
+        <div class="footer-newsletter">
+          <div class="newsletter-content">
+            <div class="newsletter-text">
+              <h4>📰 Stay Updated</h4>
+              <p>Subscribe to our newsletter for the latest news and updates</p>
+            </div>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" placeholder="Enter your email address" required>
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <div>
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="admissions.html">Admissions</a></li>
-        <li><a href="academics.html">Academics</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-container">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 Hill View College. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <span>|</span>
+            <a href="#">Terms of Service</a>
+            <span>|</span>
+            <a href="#">Site Map</a>
+          </div>
+          <p class="footer-credit">Designed with ❤️ by Hill View Tech Team</p>
+        </div>
+      </div>
     </div>
-    <div>
-      <h4>Contact</h4>
-      <p>Email: info@hillviewcollege.ac.ug</p>
-      <p>Phone: +256 700 000000</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2025 Hill View College. All Rights Reserved.</p>
+
   </div>
 </footer>
 
 <script src="js/index.js"></script>
 <script src="js/student-life.js"></script>
+<script src="js/footer.js"></script>
+
 
 </body>
 </html>

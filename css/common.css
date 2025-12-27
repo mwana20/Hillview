@@ -18,11 +18,27 @@
 	--shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
+html, body {
+  height: 100%;
+  min-height: 100%;
+  /* Site-wide campus background applied to html so it appears behind everything */
+  background-image: url('../images/campus.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Use scroll attachment for better mobile compatibility */
+  background-attachment: scroll;
+  /* Fallback color if image fails to load */
+  background-color: var(--bg-light);
+}
+
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	line-height: 1.6;
 	color: var(--text-dark);
 	overflow-x: hidden;
+	/* Keep body background transparent so html's background shows through */
+	background-color: transparent;
 }
 
 .container {

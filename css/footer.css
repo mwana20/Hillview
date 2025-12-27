@@ -17,10 +17,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('../images/footer-bg.jpg');
+  background-image: url('../images/campus.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* THIS MAKES THE IMAGE STAY FIXED */
+  background-attachment: scroll; /* THIS MAKES THE IMAGE STAY FIXED */
   background-repeat: no-repeat;
   opacity: 0.12;
   z-index: 0;

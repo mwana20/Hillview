@@ -2,6 +2,30 @@
 // NEWS PAGE JAVASCRIPT - HILL VIEW COLLEGE
 // ========================================
 
+// Inject hero slides for News page
+const createHeroSlidesNews = () => {
+  const heroSection = document.querySelector('.hero-section');
+  if (!heroSection) return;
+  const slides = [
+    'images/news-hero.svg',
+    'images/speechday.jpg',
+    'images/graduation.jpg'
+  ];
+  const gradient = 'linear-gradient(135deg, rgba(26,77,46,0.85), rgba(79,138,109,0.75))';
+  const sliderHTML = `
+    <div class="hero-slider">
+      ${slides.map((src,i) => `<div class="hero-slide${i===0 ? ' active' : ''}" style="background-image: ${gradient}, url('${src}'); background-size: cover; background-position: center;"></div>`).join('')}
+    </div>
+    <div class="slider-indicators">
+      ${slides.map((_,i) => `<span class="indicator${i===0 ? ' active' : ''}" data-slide="${i}"></span>`).join('')}
+    </div>
+  `;
+
+  heroSection.querySelector('.hero-slider')?.remove();
+  heroSection.querySelector('.slider-indicators')?.remove();
+  heroSection.insertAdjacentHTML('afterbegin', sliderHTML);
+};
+
 (function() {
   'use strict';
 
@@ -310,6 +334,10 @@
   // INITIALIZATION
   // ========================================
   function init() {
+    // Inject hero slides for News page and initialize global slider
+    createHeroSlidesNews();
+    if (window.initHeroSliders) window.initHeroSliders();
+
     // Initialize counters
     initCounters();
 

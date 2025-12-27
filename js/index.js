@@ -1,6 +1,5 @@
 // ================= HERO SLIDER FUNCTIONALITY =================
-document.addEventListener('DOMContentLoaded', function() {
-  
+function initHeroSliders() {
   // Initialize hero sliders on all sections (supports multiple .hero-section instances)
   const heroSections = document.querySelectorAll('.hero-section');
 
@@ -113,6 +112,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   });
+}
+
+// expose function to window so per-page scripts can call it after modifying DOM
+window.initHeroSliders = initHeroSliders;
+
+// Initialize on DOMContentLoaded by default
+document.addEventListener('DOMContentLoaded', function() {
+  initHeroSliders();
   
   // ================= MOBILE HAMBURGER MENU =================
   const header = document.querySelector('.site-header');

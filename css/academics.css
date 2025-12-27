@@ -1,0 +1,302 @@
+/* Academics Page Styling */
+
+/* Page Banner */
+.page-banner {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  padding: 60px 0;
+  text-align: center;
+  color: white;
+  margin-bottom: 60px;
+}
+
+.page-banner h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.page-banner p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Academic Sections */
+.academics-overview,
+.olevel-section,
+.alevel-section,
+.departments-section,
+.calendar-section {
+  padding: 60px 0;
+  position: relative;
+}
+
+.academics-overview {
+  background: white;
+}
+
+.olevel-section {
+  background: var(--bg-light);
+}
+
+.alevel-section {
+  background: white;
+}
+
+.departments-section {
+  background: var(--bg-light);
+}
+
+.calendar-section {
+  background: white;
+}
+
+/* Section Headings */
+.academics-overview h3,
+.olevel-section h3,
+.alevel-section h3,
+.departments-section h3,
+.calendar-section h3 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.academics-overview h3::after,
+.olevel-section h3::after,
+.alevel-section h3::after,
+.departments-section h3::after,
+.calendar-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-color), #e69516);
+  border-radius: 2px;
+}
+
+/* Sub Headings */
+.olevel-section h4,
+.alevel-section h4 {
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+  margin: 40px 0 20px;
+  font-weight: 600;
+}
+
+/* Paragraphs */
+.academics-overview p,
+.olevel-section p,
+.alevel-section p,
+.departments-section p,
+.calendar-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: 25px;
+}
+
+/* Subject Lists */
+.subject-list,
+.department-list,
+.calendar-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.subject-list li,
+.department-list li {
+  padding: 20px 20px 20px 60px;
+  background: white;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  border: 2px solid var(--bg-light);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.olevel-section .subject-list li,
+.alevel-section .subject-list li {
+  background: white;
+}
+
+.departments-section .department-list li {
+  background: white;
+}
+
+.subject-list li::before,
+.department-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.subject-list li:hover,
+.department-list li:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 25px rgba(245, 166, 35, 0.2);
+}
+
+.subject-list li:hover::before,
+.department-list li:hover::before {
+  transform: translateY(-50%) rotate(360deg) scale(1.1);
+  background: linear-gradient(135deg, var(--accent-color), #e69516);
+}
+
+/* Calendar List */
+.calendar-section ul {
+  grid-template-columns: 1fr;
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+.calendar-section ul li {
+  padding: 25px 30px;
+  background: linear-gradient(135deg, white, var(--bg-light));
+  border-radius: 16px;
+  border-left: 5px solid var(--accent-color);
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.calendar-section ul li:hover {
+  transform: translateX(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-left-color: var(--primary-color);
+}
+
+.calendar-section ul li strong {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subject-list li,
+.department-list li,
+.calendar-section ul li {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.subject-list li:nth-child(1) { animation-delay: 0.1s; }
+.subject-list li:nth-child(2) { animation-delay: 0.15s; }
+.subject-list li:nth-child(3) { animation-delay: 0.2s; }
+.subject-list li:nth-child(4) { animation-delay: 0.25s; }
+.subject-list li:nth-child(5) { animation-delay: 0.3s; }
+.subject-list li:nth-child(6) { animation-delay: 0.35s; }
+
+.department-list li:nth-child(1) { animation-delay: 0.1s; }
+.department-list li:nth-child(2) { animation-delay: 0.2s; }
+.department-list li:nth-child(3) { animation-delay: 0.3s; }
+.department-list li:nth-child(4) { animation-delay: 0.4s; }
+.department-list li:nth-child(5) { animation-delay: 0.5s; }
+
+.calendar-section ul li:nth-child(1) { animation-delay: 0.1s; }
+.calendar-section ul li:nth-child(2) { animation-delay: 0.2s; }
+.calendar-section ul li:nth-child(3) { animation-delay: 0.3s; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-banner {
+    padding: 40px 20px;
+  }
+
+  .page-banner h2 {
+    font-size: 2rem;
+  }
+
+  .page-banner p {
+    font-size: 1rem;
+  }
+
+  .academics-overview h3,
+  .olevel-section h3,
+  .alevel-section h3,
+  .departments-section h3,
+  .calendar-section h3 {
+    font-size: 2rem;
+  }
+
+  .olevel-section h4,
+  .alevel-section h4 {
+    font-size: 1.5rem;
+  }
+
+  .subject-list,
+  .department-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .subject-list li,
+  .department-list li {
+    padding: 16px 16px 16px 50px;
+    font-size: 1rem;
+  }
+
+  .subject-list li::before,
+  .department-list li::before {
+    width: 28px;
+    height: 28px;
+    left: 16px;
+    font-size: 14px;
+  }
+
+  .calendar-section ul li {
+    padding: 20px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-banner h2 {
+    font-size: 1.75rem;
+  }
+
+  .academics-overview h3,
+  .olevel-section h3,
+  .alevel-section h3,
+  .departments-section h3,
+  .calendar-section h3 {
+    font-size: 1.75rem;
+  }
+}

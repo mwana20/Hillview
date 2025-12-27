@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Student Life | Hill View College</title>
   <link rel="stylesheet" href="css/common.css" />
-  <link rel="stylesheet" href="css/student-life.css">
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/student-life.css" />
 </head>
 <body>
 
@@ -32,103 +33,185 @@
   </div>
 </header>
 
-<section class="section">
-  <h2>Overview</h2>
-  <p>
-    Student life at Hill View College is structured to promote academic excellence,
-    discipline, leadership, and personal growth. Both day and boarding students
-    actively participate in school programs.
-  </p>
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-slider">
+    <div class="hero-slide active" style="background-image: linear-gradient(135deg, rgba(26,77,46,0.85), rgba(79,138,109,0.75)), url('images/sports.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="hero-slide" style="background-image: linear-gradient(135deg, rgba(26,77,46,0.85), rgba(79,138,109,0.75)), url('images/mdd.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="hero-slide" style="background-image: linear-gradient(135deg, rgba(26,77,46,0.85), rgba(79,138,109,0.75)), url('images/boardinglife.jpg'); background-size: cover; background-position: center;"></div>
+  </div>
+  <div class="slider-indicators">
+    <span class="indicator active" data-slide="0"></span>
+    <span class="indicator" data-slide="1"></span>
+    <span class="indicator" data-slide="2"></span>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <h2>Student Life at Hill View</h2>
+    <p>A vibrant community where academics, sports, arts, and character development come together.</p>
+  </div>
 </section>
 
 <section class="section">
-  <h2>Boarding Life</h2>
+  <h2>Daily School Routine</h2>
   <p>
-    Boarding students live in a secure and supportive environment supervised by
-    matrons, wardens, and senior teachers.
+    Hill View College maintains a structured daily routine that balances academic work,
+    co-curricular activities, and personal development time.
   </p>
-  <ul>
-    <li>Well-ventilated dormitories</li>
-    <li>Balanced meals</li>
-    <li>Supervised evening prep</li>
-    <li>Medical and counseling services</li>
-  </ul>
-</section>
 
-<section class="section">
-  <h2>Clubs & Societies</h2>
-  <ul>
-    <li>Science Club</li>
-    <li>Debate & Public Speaking</li>
-    <li>ICT & Robotics Club</li>
-    <li>Music, Dance & Drama</li>
-    <li>Writers & Journalism Club</li>
-  </ul>
+  <div class="routine-grid">
+    <div class="routine-card">
+      <h3>Morning Assembly</h3>
+      <p class="time">7:30 AM - 8:00 AM</p>
+      <p>Students gather for prayers, announcements, and motivation to start the day.</p>
+    </div>
+    <div class="routine-card">
+      <h3>Academic Sessions</h3>
+      <p class="time">8:00 AM - 3:00 PM</p>
+      <p>Classes, practical sessions, and educational activities throughout the day.</p>
+    </div>
+    <div class="routine-card">
+      <h3>Sports & Activities</h3>
+      <p class="time">3:30 PM - 5:30 PM</p>
+      <p>Physical education, club meetings, and co-curricular activities.</p>
+    </div>
+    <div class="routine-card">
+      <h3>Evening Prep</h3>
+      <p class="time">7:00 PM - 9:00 PM</p>
+      <p>Supervised study time for boarding students to complete assignments.</p>
+    </div>
+  </div>
 </section>
 
 <section class="section">
   <h2>Sports & Games</h2>
   <p>
-    Physical education is compulsory for all students. The school participates
-    in inter-school competitions at district and national levels.
+    Physical fitness and team spirit are essential parts of student life at Hill View College.
+    We offer a variety of sports activities.
   </p>
-  <ul>
-    <li>Football</li>
-    <li>Netball</li>
+
+  <ul class="activities-list">
+    <li>Football (Boys & Girls)</li>
+    <li>Netball (Girls)</li>
     <li>Basketball</li>
     <li>Volleyball</li>
-    <li>Athletics</li>
+    <li>Athletics & Track Events</li>
+    <li>Table Tennis</li>
   </ul>
 </section>
 
 <section class="section">
-  <h2>Leadership & Discipline</h2>
+  <h2>Clubs & Societies</h2>
   <p>
-    The school operates a strong prefectorial system that trains students
-    in responsibility, leadership, and service.
+    Students can join various clubs and societies to explore their interests and develop new skills.
   </p>
-  <ul>
-    <li>Head Boy & Head Girl</li>
-    <li>Prefects</li>
-    <li>Dormitory Captains</li>
+
+  <div class="clubs-grid">
+    <div class="club-card">
+      <h3>Debate Club</h3>
+      <p>Develop public speaking, critical thinking, and argumentation skills.</p>
+    </div>
+    <div class="club-card">
+      <h3>Science Club</h3>
+      <p>Hands-on experiments, projects, and scientific explorations.</p>
+    </div>
+    <div class="club-card">
+      <h3>Music, Dance & Drama</h3>
+      <p>Express creativity through performing arts and cultural activities.</p>
+    </div>
+    <div class="club-card">
+      <h3>Religious Fellowship</h3>
+      <p>Spiritual growth and character development through faith-based activities.</p>
+    </div>
+    <div class="club-card">
+      <h3>Environmental Club</h3>
+      <p>Conservation, gardening, and environmental awareness projects.</p>
+    </div>
+    <div class="club-card">
+      <h3>ICT Club</h3>
+      <p>Coding, programming, and technology innovation activities.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Boarding Life</h2>
+  <p>
+    Boarding students enjoy a supportive community environment with proper supervision,
+    comfortable accommodation, and balanced meals.
+  </p>
+
+  <h3>Boarding Facilities Include:</h3>
+  <ul class="activities-list">
+    <li>Separate dormitories for boys and girls</li>
+    <li>Supervised study areas and prep rooms</li>
+    <li>Spacious dining hall with nutritious meals</li>
+    <li>Common rooms for recreation</li>
+    <li>24/7 security and medical care</li>
+    <li>Laundry and sanitation facilities</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Leadership & Responsibility</h2>
+  <p>
+    Students are encouraged to take on leadership roles through the school
+    prefectorial system and various student committees.
+  </p>
+
+  <ul class="activities-list">
+    <li>Head Prefects (Boy & Girl)</li>
+    <li>Deputy Head Prefects</li>
     <li>Class Monitors</li>
+    <li>Sports Captains</li>
+    <li>Club Leaders</li>
+    <li>Dormitory Prefects</li>
   </ul>
 </section>
 
 <section class="section">
-  <h2>Guidance & Counseling</h2>
+  <h2>Student Welfare & Support</h2>
   <p>
-    Hill View College provides guidance and counseling services to support
-    students academically, socially, and emotionally.
+    Hill View College is committed to the well-being of every student. We provide:
   </p>
+
+  <ul class="activities-list">
+    <li>Guidance and counseling services</li>
+    <li>Academic mentorship programs</li>
+    <li>Career guidance and university preparation</li>
+    <li>Health and wellness support</li>
+    <li>Discipline and behavior management</li>
+    <li>Parent-teacher communication</li>
+  </ul>
 </section>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <h4>Hill View College</h4>
-        <p>Mixed Day & Boarding Secondary School</p>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="academics.html">Academics</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p>Email: info@hillviewcollege.ac.ug</p>
-        <p>Phone: +256 700 000000</p>
-      </div>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>Hill View College</h4>
+      <p>Mixed Day & Boarding Secondary School</p>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Hill View College. All Rights Reserved.</p>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="academics.html">Academics</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
-  </footer>
+    <div>
+      <h4>Contact</h4>
+      <p>Email: info@hillviewcollege.ac.ug</p>
+      <p>Phone: +256 700 000000</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Hill View College. All Rights Reserved.</p>
+  </div>
+</footer>
 
-  <script src="js/index.js"></script>
+<script src="js/index.js"></script>
+<script src="js/student-life.js"></script>
 
 </body>
 </html>

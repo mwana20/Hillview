@@ -1,4 +1,4 @@
-/* Contact Page Styles */
+/* Contact Page Styles - Updated to Green/Orange Theme */
 
 /* General Page Styling */
 .contact-page {
@@ -8,7 +8,7 @@
 
 /* Contact Details Section */
 .contact-details {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   color: white;
   padding: 60px 0;
   text-align: center;
@@ -70,7 +70,7 @@
   font-size: 2.2rem;
   text-align: center;
   margin-bottom: 50px;
-  color: #1a1a1a;
+  color: var(--primary-color);
   font-weight: 600;
 }
 
@@ -92,7 +92,7 @@
   flex-direction: column;
   gap: 8px;
   font-weight: 500;
-  color: #333;
+  color: var(--text-dark);
   font-size: 1rem;
 }
 
@@ -110,8 +110,8 @@
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.1);
   background: white;
 }
 
@@ -121,7 +121,7 @@
 }
 
 .contact-form .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--accent-color) 0%, #e69516 100%);
   color: white;
   border: none;
   padding: 16px 40px;
@@ -135,7 +135,7 @@
 
 .contact-form .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 20px rgba(245, 166, 35, 0.4);
 }
 
 .contact-form .btn-primary:active {
@@ -144,21 +144,21 @@
 
 /* Map Section */
 .map-section {
-  background: #f8f9fa;
+  background: var(--bg-light);
   padding: 80px 20px;
 }
 
 .map-section h2 {
   text-align: center;
   margin-bottom: 15px;
-  color: #1a1a1a;
+  color: var(--primary-color);
 }
 
 .map-description {
   text-align: center;
   max-width: 600px;
   margin: 0 auto 40px;
-  color: #555;
+  color: var(--text-dark);
   font-size: 1.1rem;
   line-height: 1.8;
 }

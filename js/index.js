@@ -79,6 +79,39 @@ document.addEventListener('DOMContentLoaded', function() {
     heroSection.addEventListener('mouseleave', () => {
       slideTimer = setInterval(nextSlide, slideInterval);
     });
+
+    // ================= TOUCH SWIPE FOR MOBILE SLIDER =================
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    heroSection.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    heroSection.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      
+      if (touchEndX < touchStartX - swipeThreshold) {
+        // Swipe left - next slide
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+        clearInterval(slideTimer);
+        slideTimer = setInterval(nextSlide, slideInterval);
+      }
+      
+      if (touchEndX > touchStartX + swipeThreshold) {
+        // Swipe right - previous slide
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+        clearInterval(slideTimer);
+        slideTimer = setInterval(nextSlide, slideInterval);
+      }
+    }
   });
   
   // ================= MOBILE HAMBURGER MENU =================
@@ -86,23 +119,33 @@ document.addEventListener('DOMContentLoaded', function() {
   const headerFlex = document.querySelector('.header-flex');
   const nav = document.querySelector('.main-nav');
   
-  // Create hamburger button
-  const hamburger = document.createElement('button');
-  hamburger.className = 'mobile-menu-btn';
-  hamburger.setAttribute('aria-label', 'Toggle menu');
-  hamburger.innerHTML = `
-    <span></span>
-    <span></span>
-    <span></span>
-  `;
+  // Check if hamburger button already exists
+  let hamburger = document.querySelector('.mobile-menu-btn');
   
-  // Create overlay for mobile menu
-  const overlay = document.createElement('div');
-  overlay.className = 'nav-overlay';
-  document.body.appendChild(overlay);
+  if (!hamburger) {
+    // Create hamburger button
+    hamburger = document.createElement('button');
+    hamburger.className = 'mobile-menu-btn';
+    hamburger.setAttribute('aria-label', 'Toggle menu');
+    hamburger.innerHTML = `
+      <span></span>
+      <span></span>
+      <span></span>
+    `;
+    
+    // Insert hamburger button into header
+    headerFlex.appendChild(hamburger);
+  }
   
-  // Insert hamburger button into header
-  headerFlex.appendChild(hamburger);
+  // Check if overlay already exists
+  let overlay = document.querySelector('.nav-overlay');
+  
+  if (!overlay) {
+    // Create overlay for mobile menu
+    overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    document.body.appendChild(overlay);
+  }
   
   // Toggle menu function
   function toggleMenu() {
@@ -289,39 +332,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   window.addEventListener('scroll', highlightNav);
   
-  // ================= TOUCH SWIPE FOR MOBILE SLIDER =================
-  let touchStartX = 0;
-  let touchEndX = 0;
-  
-  heroSection.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
-  
-  heroSection.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  });
-  
-  function handleSwipe() {
-    const swipeThreshold = 50;
-    
-    if (touchEndX < touchStartX - swipeThreshold) {
-      // Swipe left - next slide
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-      clearInterval(slideTimer);
-      slideTimer = setInterval(nextSlide, slideInterval);
-    }
-    
-    if (touchEndX > touchStartX + swipeThreshold) {
-      // Swipe right - previous slide
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      showSlide(currentSlide);
-      clearInterval(slideTimer);
-      slideTimer = setInterval(nextSlide, slideInterval);
-    }
-  }
-  
   // ================= MOBILE MENU ANIMATION =================
   // Add staggered animation to menu items
   navLinks.forEach((link, index) => {
@@ -388,7 +398,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // ================= PRELOAD IMAGES =================
-  // You can add actual image URLs here
   const imageUrls = [
     'images/hero1.jpg',
     'images/hero2.jpg',

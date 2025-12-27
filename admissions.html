@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Admissions | Hill View College</title>
   <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="css/admissions.css" />
 </head>
 <body>
@@ -33,20 +33,28 @@
   </div>
 </header>
 
-<!-- Add this after the <header> section -->
-<section class="hero-section" id="heroSection" style="display: none;">
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-slider">
+    <div class="hero-slide active" style="background-image: linear-gradient(135deg, rgba(26,77,46,0.85), rgba(79,138,109,0.75)), url('images/campus1.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="hero-slide" style="background-image: linear-gradient(135deg, rgba(26,77,46,0.85), rgba(79,138,109,0.75)), url('images/classroom1.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="hero-slide" style="background-image: linear-gradient(135deg, rgba(26,77,46,0.85), rgba(79,138,109,0.75)), url('images/dormitory1.jpg'); background-size: cover; background-position: center;"></div>
+  </div>
+  <div class="slider-indicators">
+    <span class="indicator active" data-slide="0"></span>
+    <span class="indicator" data-slide="1"></span>
+    <span class="indicator" data-slide="2"></span>
+  </div>
   <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1 class="hero-title">Excellence in Academics and Discipline</h1>
-    <p class="hero-subtitle">Hill View College is a mixed day and boarding secondary school offering both O-Level and A-Level education, committed to nurturing disciplined, responsible, and academically excellent learners.</p>
+  <div class="container hero-content">
+    <h2>Join Hill View College</h2>
+    <p>Admissions open for O-Level and A-Level students. Experience excellence in academics and character development.</p>
     <div class="hero-buttons">
-      <a href="admissions.html" class="btn btn-primary">ADMISSIONS</a>
+      <a href="#application" class="btn btn-primary">APPLY NOW</a>
       <a href="contact.html" class="btn btn-secondary">CONTACT US</a>
     </div>
   </div>
-  <div class="hero-url">127.0.0.1:5500/index.html</div>
 </section>
-
 
 <section class="section">
   <h2>Entry Requirements</h2>
@@ -111,7 +119,7 @@
   </p>
 </section>
 
-<section class="section">
+<section class="section" id="application">
   <h2>Application Procedure</h2>
   <ol>
     <li>Pick an application form from the school or website</li>
@@ -121,33 +129,33 @@
   </ol>
 </section>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <h4>Hill View College</h4>
-        <p>Mixed Day & Boarding Secondary School</p>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="academics.html">Academics</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p>Email: info@hillviewcollege.ac.ug</p>
-        <p>Phone: +256 700 000000</p>
-      </div>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>Hill View College</h4>
+      <p>Mixed Day & Boarding Secondary School</p>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Hill View College. All Rights Reserved.</p>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="academics.html">Academics</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
-  </footer>
+    <div>
+      <h4>Contact</h4>
+      <p>Email: info@hillviewcollege.ac.ug</p>
+      <p>Phone: +256 700 000000</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Hill View College. All Rights Reserved.</p>
+  </div>
+</footer>
 
-  <script src="js/admissions.js"></script>
-    <script src="js/index.js"></script>
+<script src="js/index.js"></script>
+<script src="js/admissions.js"></script>
 
 </body>
 </html>

@@ -1,9 +1,3 @@
-/* ==================================================
-	 COMMON: Global + Header & Footer (moved from index.css)
-	 - Contains site-wide variables, base resets, and shared
-		 header/footer styles so pages that only include
-		 `common.css` render correctly.
-	 ================================================== */
 
 /* ================= GLOBAL STYLES ================= */
 * {
